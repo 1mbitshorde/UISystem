@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-21
+### Changed
+- Move package into 1M Bits Horde
+
 ## [0.1.1] - 2026-03-20
 ### Fixed
 - Handling errors when loading Screens
@@ -20,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - gitignore
 - Initial commit
 
-[Unreleased]: https://github.com/HyagoOliveira/UISystem/compare/0.1.1...main
-[0.1.1]: https://github.com/HyagoOliveira/UISystem/tree/0.1.1/
-[0.1.0]: https://github.com/HyagoOliveira/UISystem/tree/0.1.0/
+[Unreleased]: https://github.com/1mbitshorde/UISystem/compare/0.2.0...main
+[0.2.0]: https://github.com/1mbitshorde/UISystem/tree/0.2.0/
+[0.1.1]: https://github.com/1mbitshorde/UISystem/tree/0.1.1/
+[0.1.0]: https://github.com/1mbitshorde/UISystem/tree/0.1.0/

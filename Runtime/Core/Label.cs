@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Label component for Selectable UIs.

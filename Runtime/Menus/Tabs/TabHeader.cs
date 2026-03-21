@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using ActionCode.InputSystem;
+using OneM.InputSystem;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     [DisallowMultipleComponent]
     public sealed class TabHeader : MonoBehaviour

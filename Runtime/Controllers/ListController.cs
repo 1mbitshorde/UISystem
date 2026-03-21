@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Controller for a List with item placement.

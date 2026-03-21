@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Screens are used to display different parts of a Menu, as a 

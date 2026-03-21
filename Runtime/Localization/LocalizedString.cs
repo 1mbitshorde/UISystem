@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Localized String struct with optional fallback text.

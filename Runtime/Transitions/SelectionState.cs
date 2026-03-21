@@ -1,4 +1,4 @@
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Enum to control Selectable state.<br/>

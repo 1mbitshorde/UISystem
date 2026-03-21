@@ -1,7 +1,7 @@
 using System;
 using UnityEngine.EventSystems;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Interface used on objects able to be clicked (like buttons). 

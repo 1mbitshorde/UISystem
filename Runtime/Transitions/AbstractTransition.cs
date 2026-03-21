@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Abstract component to transit UI components based on <see cref="SelectionState"/>.

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Custom <see cref="Selectable"/> implementation with <see cref="OnSelected"/> callback 
@@ -116,7 +116,7 @@ namespace ActionCode.UISystem
             Debug.LogWarning($"{gameObject.name} must contain any implementation of a Graphic component in order to work.");
         }
 
-        // Converts UnityUI.SelectionState into ActionCode.UISystem.SelectionState
+        // Converts UnityUI.SelectionState into OneM.UISystem.SelectionState
         // since Unity's SelectionState is a protected enum
         private static UISystem.SelectionState GetSelectionState(SelectionState state) => state switch
         {

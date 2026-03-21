@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Global data container to be used for multiple Menus.
     /// </summary>
-    [CreateAssetMenu(fileName = "MenuData", menuName = "ActionCode/UI System/Menu Data", order = 110)]
+    [CreateAssetMenu(fileName = "MenuData", menuName = "OneM/UI System/Menu Data")]
     public class MenuData : ScriptableObject
     {
         [Header("Screen")]

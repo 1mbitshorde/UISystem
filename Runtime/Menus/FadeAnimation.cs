@@ -1,7 +1,7 @@
 using PrimeTween;
 using UnityEngine;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Data container to hold the fades in and fades out animations.

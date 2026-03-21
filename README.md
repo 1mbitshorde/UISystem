@@ -1,9 +1,8 @@
 # UI System
 
 * Extension for Unity Graphic User Interface (uGUI) System.
-* Unity minimum version: **6000.1**
-* Current version: **0.1.1**
-* License: **MIT**
+* Unity minimum version: **6000.3**
+* Current version: **0.2.0**
 
 ## Summary
 
@@ -17,19 +16,19 @@
 
 ### Using the Package Registry Server
 
-Follow the instructions inside [here](https://cutt.ly/ukvj1c8) and the package **ActionCode-UISystem** 
+Follow the instructions inside [here](https://cutt.ly/ukvj1c8) and the package **1M Bits Horde-UISystem** 
 will be available for you to install using the **Package Manager** windows.
 
 ### Using the Git URL
 
 You will need a **Git client** installed on your computer with the Path variable already set. 
 
-- Use the **Package Manager** "Add package from git URL..." feature and paste this URL: `https://github.com/HyagoOliveira/UISystem.git`
+- Use the **Package Manager** "Add package from git URL..." feature and paste this URL: `https://github.com/1mbitshorde/UISystem.git`
 
 - You can also manually modify you `Packages/manifest.json` file and add this line inside `dependencies` attribute: 
 
 ```json
-"com.actioncode.ui-system":"https://github.com/HyagoOliveira/UISystem.git"
+"com.1mbitshorde.ui-system":"https://github.com/1mbitshorde/UISystem.git"
 ```
 
 ---

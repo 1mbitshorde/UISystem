@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Audio handler for UI elements.

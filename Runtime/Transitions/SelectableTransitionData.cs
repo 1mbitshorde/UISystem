@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Color Data container for Selectable UI components.
     /// </summary>
-    [CreateAssetMenu(fileName = "SelectableTransitionData", menuName = "ActionCode/UI System/Selectable Transition Data", order = 110)]
+    [CreateAssetMenu(fileName = "SelectableTransitionData", menuName = "OneM/UI System/Selectable Transition Data")]
     public sealed class SelectableTransitionData : ScriptableObject
     {
         [Header("Colors")]

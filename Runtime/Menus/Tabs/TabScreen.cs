@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     [DisallowMultipleComponent]
     public class TabScreen : BaseScreen

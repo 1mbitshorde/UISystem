@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     public abstract class AbstractMainMenuOptionsScreen : BaseScreen
     {

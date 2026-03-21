@@ -1,8 +1,8 @@
 using PrimeTween;
 using UnityEngine;
-using ActionCode.InputSystem;
+using OneM.InputSystem;
 
-namespace ActionCode.UISystem
+namespace OneM.UISystem
 {
     /// <summary>
     /// Screen for the Any Button section from a Main Menu.
