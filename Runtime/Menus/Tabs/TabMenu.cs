@@ -70,6 +70,6 @@ namespace OneM.UISystem
             Header.rightSwitchListener.OnActionPerformed.RemoveListener(MoveRight);
         }
 
-        private void HandleTabSwitched(uint index) => Select(index);
+        private void HandleTabSwitched(uint index) => _ = OpenScreenAsync(Content.Tabs[index]);
     }
 }
