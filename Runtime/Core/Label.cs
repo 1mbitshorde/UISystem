@@ -10,8 +10,8 @@ namespace OneM.UISystem
     [DisallowMultipleComponent]
     public sealed class Label : AbstractTransition
     {
-        public TMP_Text target;
-
+        [SerializeField, Tooltip("The local Text component.")]
+        private TMP_Text target;
         [SerializeField, Tooltip("[Optional] The local Localization component.")]
         private LocalizeStringEvent localization;
 
@@ -20,8 +20,14 @@ namespace OneM.UISystem
         /// </summary>
         public string Text
         {
-            get => target.text;
-            set => target.text = value;
+            get => Target.text;
+            set => Target.text = value;
+        }
+
+        public TMP_Text Target
+        {
+            get => target;
+            set => target = value;
         }
 
         private void Reset() => Setup();
