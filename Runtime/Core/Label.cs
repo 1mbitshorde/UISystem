@@ -11,7 +11,9 @@ namespace OneM.UISystem
     public sealed class Label : AbstractTransition
     {
         public TMP_Text target;
-        public LocalizeStringEvent localization;
+
+        [SerializeField, Tooltip("[Optional] The local Localization component.")]
+        private LocalizeStringEvent localization;
 
         /// <summary>
         /// The label text.
@@ -36,8 +38,9 @@ namespace OneM.UISystem
 
         private void Setup()
         {
-            localization = GetComponent<LocalizeStringEvent>();
             target = GetComponent<TMP_Text>();
+            localization = GetComponent<LocalizeStringEvent>();
+
             if (target == null) return;
 
             target.color = Color.white;
@@ -47,6 +50,23 @@ namespace OneM.UISystem
         public override void Transit(SelectionState state, bool _)
         {
             if (data) target.color = data.GetColor(state);
+        }
+
+        /// <summary>
+        /// Updates the local Localization component using the given table and name key.
+        /// </summary>
+        /// <param name="table">The name of the Localized table.</param>
+        /// <param name="key">The name of the Localized entry inside table.</param>
+        public void UpdateLocalization(string table, string key) =>
+            localization.StringReference.SetReference(table, key);
+
+        /// <summary>
+        /// Clears the local Localization component, seting the label text to empty.
+        /// </summary>
+        public void ClearLocalization()
+        {
+            localization.StringReference = new UnityEngine.Localization.LocalizedString();
+            localization.OnUpdateString?.Invoke(string.Empty); // Clear the Text string
         }
     }
 }
