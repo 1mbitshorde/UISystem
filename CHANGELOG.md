@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- Label Use Auto Size field
 - Label Update/Clear Localization functions
 
 ## [0.2.0] - 2026-03-21

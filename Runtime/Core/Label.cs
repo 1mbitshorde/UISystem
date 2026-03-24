@@ -15,6 +15,10 @@ namespace OneM.UISystem
         [SerializeField, Tooltip("[Optional] The local Localization component.")]
         private LocalizeStringEvent localization;
 
+        [Space]
+        [SerializeField, Tooltip("Whether to enable the local Target Auto Size.")]
+        private bool useAutoSize = true;
+
         /// <summary>
         /// The label text.
         /// </summary>
@@ -24,6 +28,9 @@ namespace OneM.UISystem
             set => Target.text = value;
         }
 
+        /// <summary>
+        /// The local Text component.
+        /// </summary>
         public TMP_Text Target
         {
             get => target;
@@ -31,10 +38,12 @@ namespace OneM.UISystem
         }
 
         private void Reset() => Setup();
-        private void Start() => SetupTarget();
+        private void Start() => TrySetupTargetAutosize();
 
-        private void SetupTarget()
+        private void TrySetupTargetAutosize()
         {
+            if (!useAutoSize) return;
+
             // Settings this values only in runtime to avoid
             // Prefabs getting values changes in Editor
             target.enableAutoSizing = true;
