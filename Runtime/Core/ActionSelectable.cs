@@ -31,6 +31,7 @@ namespace OneM.UISystem
         /// </summary>
         public event Action OnUnselected;
 
+#if UNITY_EDITOR
         protected override void Reset()
         {
             base.Reset();
@@ -42,6 +43,7 @@ namespace OneM.UISystem
 
             CheckForTargetGraphic();
         }
+#endif
 
         public bool IsAvailable() => IsActive() && IsInteractable();
 
