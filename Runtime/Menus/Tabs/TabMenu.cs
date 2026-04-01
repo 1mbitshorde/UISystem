@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace OneM.UISystem
 {
+    /// <summary>
+    /// Controller for a Tab Menu, with a <see cref="TabHeader"/> and a <see cref="TabContent"/>.
+    /// </summary>
     [DisallowMultipleComponent]
     public sealed class TabMenu : Menu
     {
@@ -24,23 +27,6 @@ namespace OneM.UISystem
             UnsubscribeEvents();
         }
 
-        public void MoveLeft() => Move(-1);
-        public void MoveRight() => Move(1);
-
-        /// <summary>
-        /// Moves to the given direction.
-        /// Warps to the other side if <see cref="TabHeader.IsWarpAllowed"/> is enabled.
-        /// </summary>
-        /// <param name="direction">The direction to warp. Positive to right, negative to left.</param>
-        public void Move(int direction)
-        {
-            if (direction == 0) return;
-
-            var index = Header.GetMovedIndex(direction);
-            var canMove = Header.CurrentTab.Index != index;
-            if (canMove) _ = OpenScreenAsync(Content.Tabs[index]);
-        }
-
         public override async Awaitable OpenScreenAsync(string identifier, bool undoable = false)
         {
             var isOpeningFirstTab = !IsActive;
@@ -56,20 +42,8 @@ namespace OneM.UISystem
             if (playAudio) Audio.PlayTabSelection();
         }
 
-        private void SubscribeEvents()
-        {
-            Header.OnTabSwitched += HandleTabSwitched;
-            Header.leftSwitchListener.OnActionPerformed.AddListener(MoveLeft);
-            Header.rightSwitchListener.OnActionPerformed.AddListener(MoveRight);
-        }
-
-        private void UnsubscribeEvents()
-        {
-            Header.OnTabSwitched -= HandleTabSwitched;
-            Header.leftSwitchListener.OnActionPerformed.RemoveListener(MoveLeft);
-            Header.rightSwitchListener.OnActionPerformed.RemoveListener(MoveRight);
-        }
-
+        private void SubscribeEvents() => Header.OnTabSwitched += HandleTabSwitched;
+        private void UnsubscribeEvents() => Header.OnTabSwitched -= HandleTabSwitched;
         private void HandleTabSwitched(uint index) => _ = OpenScreenAsync(Content.Tabs[index]);
     }
 }
