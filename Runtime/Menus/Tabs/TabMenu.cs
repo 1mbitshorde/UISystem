@@ -15,6 +15,13 @@ namespace OneM.UISystem
         public TabHeader Header => header;
         public TabContent Content => content;
 
+        protected override void Reset()
+        {
+            base.Reset();
+            header = GetComponentInChildren<TabHeader>();
+            content = GetComponentInChildren<TabContent>();
+        }
+
         protected override void OnEnable()
         {
             base.OnEnable();
