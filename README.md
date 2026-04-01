@@ -2,7 +2,7 @@
 
 * Extension for Unity Graphic User Interface (uGUI) System.
 * Unity minimum version: **6000.3**
-* Current version: **0.3.2**
+* Current version: **0.4.0**
 
 ## Summary
 
