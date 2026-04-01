@@ -114,6 +114,7 @@ namespace OneM.UISystem
         {
             canvasGroup = GetComponent<CanvasGroup>();
             audioHandler = GetComponent<AudioHandler>();
+            raycaster = GetComponent<GraphicRaycaster>();
             firstScreen = GetComponentInChildren<BaseScreen>(includeInactive: false);
         }
 
