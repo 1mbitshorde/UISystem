@@ -6,7 +6,7 @@ namespace OneM.UISystem
     /// Controller for a Tab Menu, with a <see cref="TabHeader"/> and a <see cref="TabContent"/>.
     /// </summary>
     [DisallowMultipleComponent]
-    public sealed class TabMenu : Menu
+    public class TabMenu : Menu
     {
         [Space]
         [SerializeField] private TabHeader header;
@@ -35,6 +35,8 @@ namespace OneM.UISystem
             if (hasScreen && screen is TabScreen tab) Select(tab.Index, playAudio: !isOpeningFirstTab);
         }
 
+        protected virtual void OpenTab(uint index) => _ = OpenScreenAsync(Content.Tabs[index]);
+
         private void Select(uint index, bool playAudio = true)
         {
             Header.Select(index);
@@ -44,6 +46,6 @@ namespace OneM.UISystem
 
         private void SubscribeEvents() => Header.OnTabSwitched += HandleTabSwitched;
         private void UnsubscribeEvents() => Header.OnTabSwitched -= HandleTabSwitched;
-        private void HandleTabSwitched(uint index) => _ = OpenScreenAsync(Content.Tabs[index]);
+        private void HandleTabSwitched(uint index) => OpenTab(index);
     }
 }
