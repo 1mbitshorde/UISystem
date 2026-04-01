@@ -8,7 +8,7 @@ namespace OneM.UISystem
     public sealed class TabHeader : MonoBehaviour
     {
         [Tooltip("If enabled, moving a Tab will warp from one side to another.")]
-        public bool isWarpAllowed = true;
+        public bool IsWarpAllowed = true;
         public ActionPerformedListener leftSwitchListener;
         public ActionPerformedListener rightSwitchListener;
 
@@ -40,7 +40,7 @@ namespace OneM.UISystem
         {
             var nextIndex = (int)CurrentTab.Index + direction;
             var isWarping = nextIndex < 0 || nextIndex >= Tabs.Length;
-            var canWarp = isWarping && isWarpAllowed;
+            var canWarp = isWarping && IsWarpAllowed;
 
             if (canWarp) nextIndex = nextIndex < 0 ? Tabs.Length - 1 : 0;
             else nextIndex = Mathf.Clamp(nextIndex, 0, Tabs.Length - 1);

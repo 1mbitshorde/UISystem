@@ -29,7 +29,7 @@ namespace OneM.UISystem
 
         /// <summary>
         /// Moves to the given direction.
-        /// Warps to the other side if <see cref="TabHeader.isWarpAllowed"/> is enabled.
+        /// Warps to the other side if <see cref="TabHeader.IsWarpAllowed"/> is enabled.
         /// </summary>
         /// <param name="direction">The direction to warp. Positive to right, negative to left.</param>
         public void Move(int direction)
