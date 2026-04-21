@@ -118,6 +118,8 @@ namespace OneM.UISystem
             Debug.LogWarning($"{gameObject.name} must contain any implementation of a Graphic component in order to work.");
         }
 
+        protected static bool IsRunning() => Application.isPlaying;
+
         // Converts UnityUI.SelectionState into OneM.UISystem.SelectionState
         // since Unity's SelectionState is a protected enum
         private static UISystem.SelectionState GetSelectionState(SelectionState state) => state switch
