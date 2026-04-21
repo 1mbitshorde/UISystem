@@ -10,7 +10,7 @@
   "dependencies": {
     "com.unity.ugui": "2.0.0",
     "com.unity.localization": "1.5.11",
-    "com.1mbitshorde.prime-tween": "2.0.0",
+    "com.1mbitshorde.animation-system": "0.3.0",
     "com.1mbitshorde.input-system": "2.0.0"
   },
   "license": "MIT",

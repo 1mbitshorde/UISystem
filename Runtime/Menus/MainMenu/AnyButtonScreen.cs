@@ -1,6 +1,6 @@
-using PrimeTween;
 using UnityEngine;
 using OneM.InputSystem;
+using OneM.AnimationSystem;
 
 namespace OneM.UISystem
 {

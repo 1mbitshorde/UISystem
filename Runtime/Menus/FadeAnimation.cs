@@ -1,5 +1,5 @@
-using PrimeTween;
 using UnityEngine;
+using OneM.AnimationSystem;
 
 namespace OneM.UISystem
 {
