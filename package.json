@@ -1,7 +1,7 @@
 {
   "name": "com.1mbitshorde.ui-system",
   "displayName": "1M Bits Horde-UI System",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "unity": "6000.3",
   "description": "This package contains code for Unity UI (uGUI), the GameObject-based UI System.",
   "keywords": [
