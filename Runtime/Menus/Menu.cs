@@ -312,6 +312,8 @@ namespace OneM.UISystem
         }
         #endregion
 
+        public void Cancel() => OnCancel(null);
+
         public virtual void OnCancel(UnityEngine.EventSystems.BaseEventData _)
         {
             var wasLastScreenOpened = TryOpenLastScreen();
