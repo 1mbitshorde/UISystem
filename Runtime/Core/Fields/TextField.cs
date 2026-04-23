@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 namespace OneM.UISystem
 {
+    /// <summary>
+    /// Field for a text input.
+    /// </summary>
     [DisallowMultipleComponent]
     public sealed class TextField : AbstractField<string>
     {
