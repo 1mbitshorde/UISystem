@@ -51,6 +51,8 @@ namespace OneM.UISystem
 
         public void Play(AudioClip clip)
         {
+            if (!gameObject.activeInHierarchy || !Audio.enabled) return;
+
             Audio.Stop();
             Audio.PlayOneShot(clip);
         }
