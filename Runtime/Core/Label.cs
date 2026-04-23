@@ -75,6 +75,9 @@ namespace OneM.UISystem
         public void UpdateLocalization(string table, string key) =>
             localization.StringReference.SetReference(table, key);
 
+        public void UpdateLocalization(UnityEngine.Localization.LocalizedString reference) =>
+            localization.StringReference = reference;
+
         /// <summary>
         /// Clears the local Localization component, seting the label text to empty.
         /// </summary>

@@ -1,8 +1,9 @@
 using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityLocalizedString = UnityEngine.Localization.LocalizedString;
 
 namespace OneM.UISystem
 {
@@ -19,7 +20,7 @@ namespace OneM.UISystem
     public sealed class DropdownField : AbstractField<string>, IClickable
     {
         [Space]
-        [Tooltip("The Enum to use in the Dropdown Values. Use the enum type full name (e.g. UnityEngine.RuntimePlatform)")]
+        [Tooltip("The Enum to use in the Dropdown Values. Use the fully qualified enum type name (e.g. UnityEngine.RuntimePlatform)")]
         [SerializeField] private string enumTypeName;
         [SerializeField] private Label displayValue;
         [SerializeField] private DropdownDots dots;
@@ -29,10 +30,8 @@ namespace OneM.UISystem
         [SerializeField] private Button rightButton;
 
         [Header("LOCALIZATION")]
-        /*[SerializeField, Tooltip("[Optional] The Localization Table Id where the dropdown values are stored.")]
-        private string localizationTable;*/
-        [SerializeField, Tooltip("[Optional] The Localization Keys where the dropdown values are stored.")]
-        private UnityEngine.Localization.LocalizedString[] localizationKeys;
+        [SerializeField, Tooltip("[Optional] The Localization Keys where the Dropdown values are stored.")]
+        private UnityLocalizedString[] localizationKeys;
 
         public event Action OnClicked;
 
@@ -200,8 +199,22 @@ namespace OneM.UISystem
         private void UpdateDisplay()
         {
             Value = GetCurrentValue();
-            displayValue.Text = Value;
             dots.Select(CurrentIndex);
+
+            var hasLocalization = TryGetCurrentLocalization(out var localization);
+            if (hasLocalization) displayValue.UpdateLocalization(localization);
+            else
+            {
+                displayValue.ClearLocalization();
+                displayValue.Text = Value;
+            }
+        }
+
+        private bool TryGetCurrentLocalization(out UnityLocalizedString localization)
+        {
+            var hasLocalization = localizationKeys.Length > CurrentIndex;
+            localization = hasLocalization ? localizationKeys[CurrentIndex] : null;
+            return localization != null;
         }
         #endregion
     }
