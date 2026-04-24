@@ -37,7 +37,7 @@ namespace OneM.UISystem
 
         public int CurrentIndex { get; private set; }
 
-        private Array enumValues;
+        private string[] values;
         private AudioHandler audioHandler;
 
         protected override void Awake()
@@ -64,10 +64,10 @@ namespace OneM.UISystem
 
         public void Move(int direction)
         {
-            if (enumValues.Length == 0) return;
+            if (values.Length == 0) return;
 
-            CurrentIndex = (CurrentIndex + direction + enumValues.Length) % enumValues.Length;
-            UpdateDisplay();
+            CurrentIndex = (CurrentIndex + direction + values.Length) % values.Length;
+            UpdateValue();
 
             if (audioHandler) audioHandler.PlayTabSelection();
         }
@@ -89,10 +89,10 @@ namespace OneM.UISystem
         #endregion
 
         #region ENUM
+        public bool HasValues() => values != null && values.Length > 0;
         public bool HasEnumSource() => !string.IsNullOrEmpty(enumTypeName);
-        public bool HasEnumValues() => enumValues != null && enumValues.Length > 0;
         public bool TryGetValue<TEnum>(out TEnum value) where TEnum : struct => Enum.TryParse(Value, out value);
-        public string GetCurrentValue() => HasEnumValues() ? enumValues.GetValue(CurrentIndex).ToString() : string.Empty;
+        public string GetCurrentValue() => HasValues() ? values.GetValue(CurrentIndex).ToString() : string.Empty;
 
         /// <summary>
         /// Set the Dropbox values using the given enum type.
@@ -109,7 +109,7 @@ namespace OneM.UISystem
                 return;
             }
 
-            SetValues(Enum.GetValues(type));
+            SetValues(Enum.GetNames(type));
         }
 
         /// <summary>
@@ -119,29 +119,59 @@ namespace OneM.UISystem
         public void SetEnumSource<T>() where T : Enum
         {
             var type = typeof(T);
-            SetValues(Enum.GetValues(type));
+            SetValues(Enum.GetNames(type));
+        }
+
+        /// <summary>
+        /// Sets the current value based on the specified enum value if it exists.
+        /// </summary>
+        /// <param name="value">The enum value to set.</param>
+        public void SetEnumValue(Enum value)
+        {
+            if (!HasValues() || !TryGetIndex(value.ToString(), out int index)) return;
+            CurrentIndex = index;
+            UpdateValue();
         }
 
         /// <summary>
         /// Set the Dropbox values using the given values.
         /// </summary>
         /// <param name="values">The Dropdown values.</param>
-        public void SetValues(Array values)
+        public void SetValues(string[] values)
         {
             dots.Destroy();
             CurrentIndex = 0;
-            enumValues = values;
+            this.values = values;
 
-            dots.Spawn(enumValues.Length);
-            UpdateDisplay();
+            dots.Spawn(this.values.Length);
+            UpdateValue();
         }
 
         public void Clear()
         {
             dots.Destroy();
             CurrentIndex = 0;
-            enumValues = Array.Empty<string>();
+            values = Array.Empty<string>();
             displayValue.Text = string.Empty;
+        }
+
+        public void SetValueWithoutNotify(Enum value) => SetValueWithoutNotify(value.ToString());
+
+        public override void SetValueWithoutNotify(string value)
+        {
+            if (!HasValues() || !TryGetIndex(value, out int index)) return;
+
+            CurrentIndex = index;
+            UpdateDisplay();
+            base.SetValueWithoutNotify(value);
+        }
+
+        private bool TryGetIndex(string target, out int index)
+        {
+            index = Array.IndexOf(values, target);
+            var hasIndex = index >= 0;
+            if (!hasIndex) Debug.LogError($"Could no find '{target}'. It's not a valid Enum value.");
+            return hasIndex;
         }
 
         private bool TryGetEnumType(string typeName, out Type type)
@@ -196,9 +226,14 @@ namespace OneM.UISystem
             audioHandler = GetComponentInParent<AudioHandler>();
         }
 
-        private void UpdateDisplay()
+        private void UpdateValue()
         {
             Value = GetCurrentValue();
+            UpdateDisplay();
+        }
+
+        private void UpdateDisplay()
+        {
             dots.Select(CurrentIndex);
 
             var hasLocalization = TryGetCurrentLocalization(out var localization);
