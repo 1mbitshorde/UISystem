@@ -1,8 +1,8 @@
-using System;
 using TMPro;
+using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace OneM.UISystem
 {
@@ -30,6 +30,12 @@ namespace OneM.UISystem
         {
             base.OnDisable();
             if (IsRunning()) UnsubscribeEvents();
+        }
+
+        public override void SetValueWithoutNotify(string value)
+        {
+            input.SetTextWithoutNotify(value);
+            base.SetValueWithoutNotify(value);
         }
 
         protected override void SetupInput()
