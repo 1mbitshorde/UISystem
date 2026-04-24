@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+## [0.7.0] - 2026-04-24
 - ToggleField
 - TextField.OnSubmitted event
 - DropdownField.OnEnumValueSubmitted event
@@ -57,7 +58,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - gitignore
 - Initial commit
 
-[Unreleased]: https://github.com/1mbitshorde/UISystem/compare/0.6.0...main
+[Unreleased]: https://github.com/1mbitshorde/UISystem/compare/0.7.0...main
+[0.7.0]: https://github.com/1mbitshorde/UISystem/tree/0.7.0/
 [0.6.0]: https://github.com/1mbitshorde/UISystem/tree/0.6.0/
 [0.5.0]: https://github.com/1mbitshorde/UISystem/tree/0.5.0/
 [0.4.0]: https://github.com/1mbitshorde/UISystem/tree/0.4.0/
