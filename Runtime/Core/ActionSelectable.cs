@@ -35,12 +35,7 @@ namespace OneM.UISystem
         protected override void Reset()
         {
             base.Reset();
-
-            transition = Transition.None;
-            Label = GetComponentInChildren<Label>();
-            targetGraphic = GetComponentInChildren<Graphic>();
-            Transitions = GetComponentsInChildren<AbstractTransition>();
-
+            ResetFields();
             CheckForTargetGraphic();
         }
 #endif
@@ -106,6 +101,14 @@ namespace OneM.UISystem
 
         protected virtual void HandleSelection() => OnSelected?.Invoke();
         protected virtual void HandleUnselection() => OnUnselected?.Invoke();
+
+        protected virtual void ResetFields()
+        {
+            transition = Transition.None;
+            Label = GetComponentInChildren<Label>();
+            targetGraphic = GetComponentInChildren<Graphic>();
+            Transitions = GetComponentsInChildren<AbstractTransition>();
+        }
 
         private void CheckForTargetGraphic()
         {

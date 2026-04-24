@@ -40,8 +40,6 @@ namespace OneM.UISystem
         /// </summary>
         public void Toggle() => Value = !Value;
 
-        protected override void SetupInput() { }
-
         protected override void ChangeValue(bool value)
         {
             UpdateDisplay(value);

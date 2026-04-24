@@ -38,8 +38,9 @@ namespace OneM.UISystem
             base.SetValueWithoutNotify(value);
         }
 
-        protected override void SetupInput()
+        protected override void ResetFields()
         {
+            base.ResetFields();
             input = GetComponentInChildren<TMP_InputField>();
             input.interactable = true;
             input.transition = Transition.None;

@@ -226,7 +226,11 @@ namespace OneM.UISystem
         #endregion
 
         #region INITIALIZATION
-        protected override void SetupInput() => dots = GetComponentInChildren<DropdownDots>();
+        protected override void ResetFields()
+        {
+            base.ResetFields();
+            dots = GetComponentInChildren<DropdownDots>();
+        }
 
         private void FindComponents()
         {

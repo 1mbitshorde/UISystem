@@ -32,19 +32,12 @@ namespace OneM.UISystem
 
         private T value;
 
-        protected override void Reset()
-        {
-            base.Reset();
-            SetupInput();
-        }
-
         /// <summary>
         /// Sets the Value without invoking the <see cref="OnValueChanged"/> event.
         /// </summary>
         /// <param name="value">The value to set.</param>
         public virtual void SetValueWithoutNotify(T value) => this.value = value;
 
-        protected abstract void SetupInput();
         protected virtual void ChangeValue(T value) => OnValueChanged?.Invoke(value);
     }
 }
