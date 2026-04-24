@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +14,11 @@ namespace OneM.UISystem
     {
         [Space]
         [SerializeField] private TMP_InputField input;
+
+        /// <summary>
+        /// Event fired when the Input Field submits its data.
+        /// </summary>
+        public event Action<string> OnSubmitted;
 
         protected override void OnEnable()
         {
@@ -46,8 +52,19 @@ namespace OneM.UISystem
             if (IsAvailable()) input.OnDeselect(eventData);
         }
 
-        private void SubscribeEvents() => input.onValueChanged.AddListener(HandleInputValueChanged);
-        private void UnsubscribeEvents() => input.onValueChanged.RemoveListener(HandleInputValueChanged);
+        private void SubscribeEvents()
+        {
+            input.onSubmit.AddListener(HandleInputSubmit);
+            input.onValueChanged.AddListener(HandleInputValueChanged);
+        }
+
+        private void UnsubscribeEvents()
+        {
+            input.onSubmit.RemoveListener(HandleInputSubmit);
+            input.onValueChanged.RemoveListener(HandleInputValueChanged);
+        }
+
         private void HandleInputValueChanged(string value) => Value = value;
+        private void HandleInputSubmit(string value) => OnSubmitted?.Invoke(value);
     }
 }
