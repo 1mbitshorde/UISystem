@@ -18,7 +18,7 @@ namespace OneM.UISystem
             {
                 if (value.Equals(this.value)) return;
                 this.value = value;
-                OnValueChanged?.Invoke(value);
+                ChangeValue(this.value);
             }
         }
 
@@ -45,5 +45,6 @@ namespace OneM.UISystem
         public virtual void SetValueWithoutNotify(T value) => this.value = value;
 
         protected abstract void SetupInput();
+        protected virtual void ChangeValue(T value) => OnValueChanged?.Invoke(value);
     }
 }
