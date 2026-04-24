@@ -34,9 +34,11 @@ namespace OneM.UISystem
         private UnityLocalizedString[] localizationKeys;
 
         public event Action OnClicked;
+        public event Action<Enum> OnEnumValueSubmitted;
 
         public int CurrentIndex { get; private set; }
 
+        private Type enumType;
         private string[] values;
         private AudioHandler audioHandler;
 
@@ -97,19 +99,19 @@ namespace OneM.UISystem
         /// <summary>
         /// Set the Dropbox values using the given enum type.
         /// </summary>
-        /// <param name="enumType">
+        /// <param name="enumTypeName">
         /// The Enum to use in the Dropdown Values. Use the enum type full name (e.g. UnityEngine.RuntimePlatform)
         /// </param>
-        public void SetEnumSource(string enumType)
+        public void SetEnumSource(string enumTypeName)
         {
-            var isEnum = TryGetEnumType(enumType, out Type type);
+            var isEnum = TryGetEnumType(enumTypeName, out enumType);
             if (!isEnum)
             {
-                Debug.LogError($"Could not load enum '{enumType}'. Ensure you are using the Full Name (Namespace.TypeName).");
+                Debug.LogError($"Could not load enum '{enumTypeName}'. Ensure you are using the Full Name (Namespace.TypeName).");
                 return;
             }
 
-            SetValues(Enum.GetNames(type));
+            SetValues(Enum.GetNames(enumType));
         }
 
         /// <summary>
@@ -213,7 +215,13 @@ namespace OneM.UISystem
 
         private void Press()
         {
-            if (IsAvailable()) OnClicked?.Invoke();
+            if (!IsAvailable()) return;
+
+            OnClicked?.Invoke();
+
+            if (enumType == null) return;
+            var hasEnum = Enum.TryParse(enumType, Value, out var result);
+            if (hasEnum) OnEnumValueSubmitted?.Invoke((Enum)result);
         }
         #endregion
 

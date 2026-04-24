@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - TextField.OnSubmitted event
+- DropdownField.OnEnumValueSubmitted event
 
 ## [0.6.0] - 2026-04-23
 ### Added
