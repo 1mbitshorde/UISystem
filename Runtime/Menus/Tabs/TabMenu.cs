@@ -9,6 +9,8 @@ namespace OneM.UISystem
     public sealed class TabMenu : Menu
     {
         [Space]
+        [Tooltip("If true, the menu will be activated using the last opened Tab.")]
+        public bool useLastTab;
         [SerializeField] private TabHeader header;
         [SerializeField] private TabContent content;
 
@@ -38,8 +40,13 @@ namespace OneM.UISystem
         {
             var isOpeningFirstTab = !IsActive;
             await base.OpenScreenAsync(identifier, undoable);
+
             var hasScreen = Screens.TryGetValue(identifier, out var screen);
-            if (hasScreen && screen is TabScreen tab) Select(tab.Index, playAudio: !isOpeningFirstTab);
+            if (hasScreen && screen is TabScreen tab)
+            {
+                if (useLastTab) firstScreen = screen;
+                Select(tab.Index, playAudio: !isOpeningFirstTab);
+            }
         }
 
         private void Select(uint index, bool playAudio = true)
