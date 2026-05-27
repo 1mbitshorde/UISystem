@@ -1,7 +1,7 @@
 {
   "name": "com.1mbitshorde.ui-system",
   "displayName": "1M Bits Horde-UI System",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "unity": "6000.3",
   "description": "This package contains code for Unity UI (uGUI), the GameObject-based UI System.",
   "keywords": [
@@ -10,8 +10,8 @@
   "dependencies": {
     "com.unity.ugui": "2.0.0",
     "com.unity.localization": "1.5.11",
-    "com.1mbitshorde.animation-system": "0.3.0",
-    "com.1mbitshorde.input-system": "2.0.0"
+    "com.1mbitshorde.animation-system": "0.3.1",
+    "com.1mbitshorde.input-system": "2.1.0"
   },
   "license": "MIT",
   "homepage": "https://github.com/1mbitshorde/UISystem#readme",
