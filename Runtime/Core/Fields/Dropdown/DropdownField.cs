@@ -164,7 +164,7 @@ namespace OneM.UISystem
             if (!HasValues() || !TryGetIndex(value, out int index)) return;
 
             CurrentIndex = index;
-            UpdateDisplay();
+            UpdateValue();
             base.SetValueWithoutNotify(value);
         }
 
