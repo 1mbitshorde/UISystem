@@ -183,6 +183,8 @@ namespace OneM.UISystem
 
             // Disable the entire menu input while opening Screen
             DisableInput();
+
+            await CloseCurrentScreenAsync(undoable);
             CloseAnyOpenedScreens();
 
             LastScreen = CurrentScreen;
