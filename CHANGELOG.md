@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
+- Select load button when available
 - Close closeable Screens
 
 ## [0.7.4] - 2026-06-19
