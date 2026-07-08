@@ -184,10 +184,10 @@ namespace OneM.UISystem
             // Disable the entire menu input while opening Screen
             DisableInput();
 
+            LastScreen = CurrentScreen;
             await CloseCurrentScreenAsync(undoable);
             CloseAnyOpenedScreens();
 
-            LastScreen = CurrentScreen;
             CurrentScreen = screen;
 
             try
@@ -272,6 +272,7 @@ namespace OneM.UISystem
             OnScreenClosed?.Invoke(CurrentScreen);
 
             if (undoable) undoHistory.Push(CurrentScreen);
+            CurrentScreen = null;
         }
         #endregion
 
