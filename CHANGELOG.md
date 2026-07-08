@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7.6] - 2026-07-08
+### Fixed
+- Close current screen
+
 ## [0.7.5] - 2026-07-07
 ### Fixed
 - Select load button when available
@@ -79,7 +83,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - gitignore
 - Initial commit
 
-[Unreleased]: https://github.com/1mbitshorde/UISystem/compare/0.7.5...main
+[Unreleased]: https://github.com/1mbitshorde/UISystem/compare/0.7.6...main
+[0.7.6]: https://github.com/1mbitshorde/UISystem/tree/0.7.6/
 [0.7.5]: https://github.com/1mbitshorde/UISystem/tree/0.7.5/
 [0.7.4]: https://github.com/1mbitshorde/UISystem/tree/0.7.4/
 [0.7.3]: https://github.com/1mbitshorde/UISystem/tree/0.7.3/
