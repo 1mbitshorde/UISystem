@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -81,6 +82,20 @@ namespace OneM.UISystem
             get => raycaster.enabled;
             private set => raycaster.enabled = value;
         }
+
+        /// <summary>
+        /// Whether this Menu Canvas Group is enabled. 
+        /// </summary>
+        public bool Interactable
+        {
+            get => canvasGroup.interactable;
+            set => canvasGroup.interactable = value;
+        }
+
+        /// <summary>
+        /// The menu identifier name.
+        /// </summary>
+        public string Identifier => gameObject.name;
 
         /// <summary>
         /// The local UI Audio Handler.
@@ -233,6 +248,32 @@ namespace OneM.UISystem
             return hasUndoableScreen;
         }
 
+        /// <summary>
+        /// Opens the given menu, closing this current one.
+        /// </summary>
+        /// <param name="identifier">The menu identifier.</param>
+        public void OpenMenu(string identifier) => OpenMenu(identifier, string.Empty);
+
+        /// <summary>
+        /// <inheritdoc cref="OpenMenu(string)"/>
+        /// </summary>
+        /// <param name="identifier">The menu identifier.</param>
+        /// <param name="screenIdentifier">The screen inside the menu to open.</param>
+        public virtual async void OpenMenu(string identifier, string screenIdentifier)
+        {
+            await Close();
+
+            var menu = FindMenu(identifier);
+            var hasInvalidScreen = string.IsNullOrEmpty(screenIdentifier);
+
+            if (hasInvalidScreen) menu.Activate();
+            else
+            {
+                menu.firstScreen = null;
+                _ = menu.OpenScreenAsync(screenIdentifier);
+            }
+        }
+
         public void EnableInput() => SetInputEnable(true);
         public void DisableInput() => SetInputEnable(false);
 
@@ -273,6 +314,26 @@ namespace OneM.UISystem
 
             if (undoable) undoHistory.Push(CurrentScreen);
             CurrentScreen = null;
+        }
+
+        /// <summary>
+        /// Closes this menu.
+        /// </summary>
+        /// <returns><inheritdoc cref="OpenFirstScreenAsync"/></returns>
+        public virtual async Awaitable Close()
+        {
+            SetOpening(true);
+            IsRaycasterEnabled = true;
+
+            DisableInput();
+            await CloseCurrentScreenAsync();
+            CloseAnyOpenedScreens();
+
+            LastScreen = CurrentScreen;
+            CurrentScreen = null;
+
+            SetOpening(false);
+            SetActive(false);
         }
         #endregion
 
@@ -321,6 +382,35 @@ namespace OneM.UISystem
             if (wasLastScreenOpened) Audio.PlayCancellation();
 
             OnCanceled?.Invoke();
+        }
+
+        public override string ToString() => Identifier;
+
+        public static Menu FindMenu(string identifier)
+        {
+            var menus = FindObjectsByType<Menu>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None
+            );
+
+            foreach (var menu in menus)
+            {
+                if (menu.Identifier.Equals(identifier))
+                {
+                    return menu;
+                }
+            }
+
+            return null;
+        }
+
+        public static Menu GetFirstOpenedMenu()
+        {
+            var menus = FindObjectsByType<Menu>(
+                FindObjectsInactive.Exclude,
+                FindObjectsSortMode.None
+            );
+            return menus.FirstOrDefault(menu => menu.IsOpened);
         }
     }
 }
