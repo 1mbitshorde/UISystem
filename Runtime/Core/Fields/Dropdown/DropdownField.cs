@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityLocalizedString = UnityEngine.Localization.LocalizedString;
 
 namespace OneM.UISystem
@@ -158,6 +158,13 @@ namespace OneM.UISystem
         }
 
         public void SetValueWithoutNotify(Enum value) => SetValueWithoutNotify(value.ToString());
+
+        public void SetValueWithoutNotify(int index)
+        {
+            CurrentIndex = index;
+            UpdateValue();
+            base.SetValueWithoutNotify(Value);
+        }
 
         public override void SetValueWithoutNotify(string value)
         {
