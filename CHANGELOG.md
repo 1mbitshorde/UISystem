@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- Localization System dependency
+- LanguageButtonHandler and LanguageSelector components
+- DropdownFieldLocalization component 
 - Open/Close Menu functions
 
 ## [0.7.6] - 2026-07-08
