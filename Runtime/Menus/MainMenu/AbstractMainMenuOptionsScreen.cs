@@ -12,7 +12,7 @@ namespace OneM.UISystem
 
         [Header("Screens")]
         public string loadScreen = "LoadScreen";
-        public string optionsScreen = "OptionsScreen";
+        public string optionsMenu = "PV_OptionsMenu";
 
         protected override void SubscribeEvents()
         {
@@ -20,7 +20,7 @@ namespace OneM.UISystem
 
             continueButton.OnClicked += HandleContinueButtonClicked;
             loadButton.OnClicked += HandleLoadButtonClicked;
-            optionsButton.OnClicked += HandleSettingsButtonClicked;
+            optionsButton.OnClicked += HandleOptionsButtonClicked;
             exitButton.OnClicked += HandleExitButtonClicked;
         }
 
@@ -30,7 +30,7 @@ namespace OneM.UISystem
 
             continueButton.OnClicked -= HandleContinueButtonClicked;
             loadButton.OnClicked -= HandleLoadButtonClicked;
-            optionsButton.OnClicked -= HandleSettingsButtonClicked;
+            optionsButton.OnClicked -= HandleOptionsButtonClicked;
             exitButton.OnClicked -= HandleExitButtonClicked;
         }
 
@@ -45,7 +45,7 @@ namespace OneM.UISystem
         protected abstract void HandleContinueButtonClicked();
 
         protected virtual void HandleLoadButtonClicked() => OpenCloseableScreen(loadScreen);
-        protected virtual void HandleSettingsButtonClicked() => OpenCloseableScreen(optionsScreen);
+        protected virtual void HandleOptionsButtonClicked() => Menu.OpenMenu(optionsMenu);
         protected virtual void HandleExitButtonClicked() => ModalMenu.ShowQuitGameDialogue();
     }
 }
