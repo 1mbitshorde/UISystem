@@ -12,7 +12,7 @@ namespace OneM.UISystem
 
         [Header("Screens")]
         public string loadScreen = "LoadScreen";
-        public string optionsMenu = "PV_OptionsMenu";
+        public string optionsMenu = "P_OptionsMenu";
 
         protected override void SubscribeEvents()
         {
