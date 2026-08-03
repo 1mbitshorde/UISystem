@@ -45,6 +45,7 @@ namespace OneM.UISystem
         public void PlaySelection() => Play(data.selection);
         public void PlaySubmition() => Play(data.submition);
         public void PlayCancellation() => Play(data.cancellation);
+        public void PlayError() => Play(data.error);
         public void PlayTabSelection() => Play(data.tabSelection);
         public void PlayModalOpen() => Play(data.modalOpen);
         public void PlayModalClose() => Play(data.modalClose);
