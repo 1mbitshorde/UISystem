@@ -9,7 +9,7 @@ namespace OneM.UISystem
     /// </summary>
     /// <remarks>
     /// Screens contains one or multiple elements that can be selected, submitted (clicked) or canceled. 
-    /// A local or parented <see cref="AudioHandler"/> component will play the corresponding audio from the <see cref="MenuData"/>.
+    /// A local or parented <see cref="AudioHandler"/> component will play the corresponding audio from the <see cref="MenuAudioData"/>.
     /// </remarks>
     [DisallowMultipleComponent]
     public class BaseScreen : MonoBehaviour

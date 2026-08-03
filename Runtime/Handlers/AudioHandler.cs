@@ -16,8 +16,8 @@ namespace OneM.UISystem
     {
         [SerializeField, Tooltip("The local Audio Source.")]
         private AudioSource audioSource;
-        [SerializeField, Tooltip("The Global Data for Menus.")]
-        private MenuData data;
+        [SerializeField, Tooltip("The Global Audio Data for Menus.")]
+        private MenuAudioData data;
 
         /// <summary>
         /// The local Audio Source.
@@ -25,9 +25,9 @@ namespace OneM.UISystem
         public AudioSource Audio => audioSource;
 
         /// <summary>
-        /// The Global Data for Menus.
+        /// The Audio Global Data for Menus.
         /// </summary>
-        public MenuData Data
+        public MenuAudioData Data
         {
             get => data;
             set => data = value;

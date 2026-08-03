@@ -19,7 +19,7 @@ namespace OneM.UISystem
     /// From an opened Screen, you can go back to the last one using the Cancel input (back button).<br/><br/>
     /// 
     /// Each Screen contains one or multiple elements that can be selected, submitted (clicked) or canceled. 
-    /// The local <see cref="AudioHandler"/> component will play the corresponding audio from the <see cref="MenuData"/>.
+    /// The local <see cref="AudioHandler"/> component will play the corresponding audio from the <see cref="MenuAudioData"/>.
     /// </remarks>
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-1)]

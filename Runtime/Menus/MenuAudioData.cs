@@ -3,10 +3,10 @@ using UnityEngine;
 namespace OneM.UISystem
 {
     /// <summary>
-    /// Global data container to be used for multiple Menus.
+    /// Global Audio data container to be used for multiple Menus.
     /// </summary>
-    [CreateAssetMenu(fileName = "MenuData", menuName = "OneM/UI System/Menu Data")]
-    public class MenuData : ScriptableObject
+    [CreateAssetMenu(fileName = "MenuAudioData", menuName = "OneM/UI System/Menu Audio Data")]
+    public class MenuAudioData : ScriptableObject
     {
         [Header("Screen")]
         [Tooltip("The audio played when a element inside a Screen is selected.")]
@@ -27,6 +27,5 @@ namespace OneM.UISystem
         public AudioClip modalOpen;
         [Tooltip("The audio played when a Modal is closed.")]
         public AudioClip modalClose;
-
     }
 }
