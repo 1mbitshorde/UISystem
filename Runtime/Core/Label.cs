@@ -86,5 +86,7 @@ namespace OneM.UISystem
             localization.StringReference = new UnityEngine.Localization.LocalizedString();
             localization.OnUpdateString?.Invoke(string.Empty); // Clear the Text string
         }
+
+        public void SetTargetColor(Color color) => Target.color = color;
     }
 }
