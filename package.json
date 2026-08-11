@@ -12,7 +12,7 @@
     "com.unity.localization": "1.5.12",
     "com.1mbitshorde.animation-system": "1.0.0",
     "com.1mbitshorde.input-system": "2.4.1",
-    "com.1mbitshorde.localization-system": "3.0.0"
+    "com.1mbitshorde.localization-system": "3.2.0"
   },
   "license": "MIT",
   "homepage": "https://github.com/1mbitshorde/UISystem#readme",

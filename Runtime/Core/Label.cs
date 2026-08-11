@@ -88,6 +88,7 @@ namespace OneM.UISystem
         public void UpdateDynamicLocalization(string variableName, bool value) => localization.StringReference.UpdateDynamicLocalization(variableName, value);
         public void UpdateDynamicLocalization(string variableName, float value) => localization.StringReference.UpdateDynamicLocalization(variableName, value);
         public void UpdateDynamicLocalization(string variableName, System.DateTime value, string format = "d") => localization.StringReference.UpdateDynamicLocalization(variableName, value, format);
+        public void UpdateDynamicLocalization(string variableName, string table, string key) => localization.StringReference.UpdateDynamicLocalization(variableName, table, key);
 
         /// <summary>
         /// Clears the local Localization component, seting the label text to empty.
