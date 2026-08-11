@@ -1,3 +1,4 @@
+using OneM.LocalizationSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
@@ -67,6 +68,9 @@ namespace OneM.UISystem
             if (data) target.color = data.GetColor(state);
         }
 
+        public void SetTargetColor(Color color) => Target.color = color;
+
+        #region LOCALIZATION
         /// <summary>
         /// Updates the local Localization component using the given table and name key.
         /// </summary>
@@ -78,6 +82,13 @@ namespace OneM.UISystem
         public void UpdateLocalization(UnityEngine.Localization.LocalizedString reference) =>
             localization.StringReference = reference;
 
+        public void UpdateDynamicLocalization(string variableName, string value) => localization.StringReference.UpdateDynamicLocalization(variableName, value);
+        public void UpdateDynamicLocalization(string variableName, int value) => localization.StringReference.UpdateDynamicLocalization(variableName, value);
+        public void UpdateDynamicLocalization(string variableName, uint value) => localization.StringReference.UpdateDynamicLocalization(variableName, value);
+        public void UpdateDynamicLocalization(string variableName, bool value) => localization.StringReference.UpdateDynamicLocalization(variableName, value);
+        public void UpdateDynamicLocalization(string variableName, float value) => localization.StringReference.UpdateDynamicLocalization(variableName, value);
+        public void UpdateDynamicLocalization(string variableName, System.DateTime value, string format = "d") => localization.StringReference.UpdateDynamicLocalization(variableName, value, format);
+
         /// <summary>
         /// Clears the local Localization component, seting the label text to empty.
         /// </summary>
@@ -86,7 +97,6 @@ namespace OneM.UISystem
             localization.StringReference = new UnityEngine.Localization.LocalizedString();
             localization.OnUpdateString?.Invoke(string.Empty); // Clear the Text string
         }
-
-        public void SetTargetColor(Color color) => Target.color = color;
+        #endregion
     }
 }
