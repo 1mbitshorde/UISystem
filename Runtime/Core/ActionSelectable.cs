@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace OneM.UISystem
 {
@@ -71,6 +71,24 @@ namespace OneM.UISystem
         }
 
         public virtual void Cancel() => OnCanceled?.Invoke();
+
+        public void SetExplicitNavigation(
+            Selectable selectOnUp = null,
+            Selectable selectOnLeft = null,
+            Selectable selectOnRight = null,
+            Selectable selectOnDown = null
+        )
+        {
+            var nav = navigation;
+
+            nav.mode = Navigation.Mode.Explicit;
+            nav.selectOnUp = selectOnUp;
+            nav.selectOnLeft = selectOnLeft;
+            nav.selectOnRight = selectOnRight;
+            nav.selectOnDown = selectOnDown;
+
+            navigation = nav;
+        }
 
         // Similar to UI Toolkit Bubble-Up event propagation,
         // notify the cancellable parent about the cancellation
