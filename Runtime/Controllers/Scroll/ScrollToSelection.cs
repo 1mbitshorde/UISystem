@@ -41,6 +41,8 @@ namespace OneM.UISystem
 
         private void TryKeepTargetInView()
         {
+            if (!IsScrollNeeded()) return;
+
             var current = EventSystem.current.currentSelectedGameObject;
             if (current == null || !current.transform.IsChildOf(content)) return;
 
@@ -48,8 +50,21 @@ namespace OneM.UISystem
             if (hasTarget) UpdateTargetPosition(target);
         }
 
+        private bool IsScrollNeeded()
+        {
+            var viewport = scrollRect.viewport ? scrollRect.viewport : scrollRectTransform;
+            return content.rect.height > viewport.rect.height;
+        }
+
         private void UpdateAnchoredPosition()
         {
+            var smallDistance = Vector2.Distance(content.anchoredPosition, targetPosition) < 0.01f;
+            if (smallDistance)
+            {
+                content.anchoredPosition = targetPosition;
+                return;
+            }
+
             content.anchoredPosition = Vector2.Lerp(
                 content.anchoredPosition,
                 targetPosition,
