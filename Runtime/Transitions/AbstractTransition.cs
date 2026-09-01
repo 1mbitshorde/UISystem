@@ -10,7 +10,9 @@ namespace OneM.UISystem
         [Tooltip("The data used to transit the UI state.")]
         [SerializeField] protected SelectableTransitionData data;
 
-        public void SetData(SelectableTransitionData data) => this.data = data;
         public abstract void Transit(SelectionState state, bool instant);
+
+        public void SetData(SelectableTransitionData data) => this.data = data;
+        public void TransitToNormalState() => Transit(SelectionState.Normal, true);
     }
 }
