@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- MouseScrollHandler
 - GamepadScrollHandler
 - Target functions into Label
 - Mouse Scroll functionality into ScrollToSelectionHandler
