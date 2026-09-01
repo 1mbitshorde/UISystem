@@ -12,7 +12,7 @@ namespace OneM.UISystem
     /// Put this component inside the Scroll Rect Content Game Object.
     /// </remarks>
     [RequireComponent(typeof(RectTransform))]
-    public class ScrollToSelection : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class ScrollToSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private ScrollRect scrollRect;
         [SerializeField] private RectTransform content;

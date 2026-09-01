@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Target functions into Label
-- Mouse Scroll functionality into ScrollToSelection
+- Mouse Scroll functionality into ScrollToSelectionHandler
 
 ## [0.8.4] - 2026-08-31
 ### Added
-- Scrolls a ScrollRect content area to keep the currently focused
+- ScrollToSelectionHandler: Scrolls a ScrollRect content area to keep the currently focused
 
 ## [0.8.3] - 2026-08-17
 ### Added
