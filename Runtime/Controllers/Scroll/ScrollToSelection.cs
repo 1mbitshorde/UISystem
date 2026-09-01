@@ -6,13 +6,13 @@ namespace OneM.UISystem
 {
     /// <summary>
     /// Automatically scrolls a ScrollRect content area to keep the currently focused 
-    /// UI element visible when navigating with a gamepad or keyboard.
+    /// UI element visible when navigating with a gamepad, keyboard or mouse wheel.
     /// </summary>
     /// <remarks>
     /// Put this component inside the Scroll Rect Content Game Object.
     /// </remarks>
     [RequireComponent(typeof(RectTransform))]
-    public class ScrollToSelection : MonoBehaviour
+    public class ScrollToSelection : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private ScrollRect scrollRect;
         [SerializeField] private RectTransform content;
@@ -20,6 +20,7 @@ namespace OneM.UISystem
 
         private RectTransform scrollRectTransform;
         private Vector2 targetPosition;
+        private bool isPointerOver;
 
         private void Reset()
         {
@@ -35,13 +36,28 @@ namespace OneM.UISystem
 
         private void Update()
         {
+            HandleMouseWheel();
             TryKeepTargetInView();
             UpdateAnchoredPosition();
         }
 
+        public void OnPointerEnter(PointerEventData _) => isPointerOver = true;
+        public void OnPointerExit(PointerEventData _) => isPointerOver = false;
+
+        private void HandleMouseWheel()
+        {
+            if (!isPointerOver || scrollRect == null) return;
+
+            var hasScroll = InputSystem.InputSystem.TryGetMouseScrollValue(out var scrollValue);
+            if (!hasScroll) return;
+
+            var verticalScroll = Mathf.Abs(scrollValue.y);
+            if (verticalScroll > 0.01f) targetPosition = content.anchoredPosition;
+        }
+
         private void TryKeepTargetInView()
         {
-            if (!IsScrollNeeded()) return;
+            if (!IsScrollNeeded() || isPointerOver) return;
 
             var current = EventSystem.current.currentSelectedGameObject;
             if (current == null || !current.transform.IsChildOf(content)) return;
@@ -52,14 +68,14 @@ namespace OneM.UISystem
 
         private bool IsScrollNeeded()
         {
-            var viewport = scrollRect.viewport ? scrollRect.viewport : scrollRectTransform;
+            var viewport = scrollRect.viewport != null ? scrollRect.viewport : scrollRectTransform;
             return content.rect.height > viewport.rect.height;
         }
 
         private void UpdateAnchoredPosition()
         {
-            var smallDistance = Vector2.Distance(content.anchoredPosition, targetPosition) < 0.01f;
-            if (smallDistance)
+            var isSmallDistance = Vector2.Distance(content.anchoredPosition, targetPosition) < 0.01f;
+            if (isSmallDistance)
             {
                 content.anchoredPosition = targetPosition;
                 return;
