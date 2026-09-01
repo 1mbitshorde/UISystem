@@ -38,6 +38,8 @@ namespace OneM.UISystem
             set => target = value;
         }
 
+        public float TargetFontSize => Target.fontSize;
+
         private void Reset() => Setup();
         private void Start() => TrySetupTargetAutosize();
 
@@ -68,7 +70,18 @@ namespace OneM.UISystem
             if (data) target.color = data.GetColor(state);
         }
 
+        #region TARGET
         public void SetTargetColor(Color color) => Target.color = color;
+
+        public int GetTargetLineCount()
+        {
+            if (target == null) return 0;
+            target.ForceMeshUpdate();
+            return target.textInfo.lineCount;
+        }
+
+        public float GetTargetLineHeight() => TargetFontSize * GetTargetLineCount();
+        #endregion
 
         #region LOCALIZATION
         /// <summary>
