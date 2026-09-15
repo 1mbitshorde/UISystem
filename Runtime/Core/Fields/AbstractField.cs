@@ -20,7 +20,7 @@ namespace OneM.UISystem
 
                 if (IsReadOnly)
                 {
-                    DenyReadOnlyValueChange();
+                    DenyValueChange();
                     return;
                 }
 
@@ -32,7 +32,7 @@ namespace OneM.UISystem
         /// <summary>
         /// Whether the value is read only and cannot be modified.
         /// <para>
-        /// <see cref="OnReadOnlyValueChangeDenied"/> event will be fired when trying to change read only values.
+        /// <see cref="OnValueChangeDenied"/> event will be fired when trying to change read only values.
         /// </para>
         /// </summary>
         public bool IsReadOnly { get; set; }
@@ -48,7 +48,7 @@ namespace OneM.UISystem
         /// <summary>
         /// Event fired when trying to change a read only Value, when <see cref="IsReadOnly"/> is true.
         /// </summary>
-        public event Action OnReadOnlyValueChangeDenied;
+        public event Action OnValueChangeDenied;
 
         private T value;
 
@@ -59,6 +59,6 @@ namespace OneM.UISystem
         public virtual void SetValueWithoutNotify(T value) => this.value = value;
 
         protected virtual void ChangeValue(T value) => OnValueChanged?.Invoke(value);
-        protected virtual void DenyReadOnlyValueChange() => OnReadOnlyValueChangeDenied?.Invoke();
+        protected virtual void DenyValueChange() => OnValueChangeDenied?.Invoke();
     }
 }

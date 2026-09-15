@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - IsReadOnly property for Fields
-- OnReadOnlyValueChangeDenied event for Fields
+- OnValueChangeDenied event for Fields
 
 ## [0.8.5] - 2026-09-01
 ### Added
