@@ -89,11 +89,10 @@ namespace OneM.UISystem
         /// </summary>
         /// <param name="table">The name of the Localized table.</param>
         /// <param name="key">The name of the Localized entry inside table.</param>
-        public void UpdateLocalization(string table, string key) =>
-            localization.StringReference.SetReference(table, key);
-
+        public void UpdateLocalization(string table, string key) => localization.StringReference.SetReference(table, key);
         public void UpdateLocalization(UnityEngine.Localization.LocalizedString reference) =>
             localization.StringReference = reference;
+        public void UpdateLocalization(LocalizedString reference) => reference.UpdateLocalization(this);
 
         public void UpdateDynamicLocalization(string variableName, string value) => localization.StringReference.UpdateDynamicLocalization(variableName, value);
         public void UpdateDynamicLocalization(string variableName, int value) => localization.StringReference.UpdateDynamicLocalization(variableName, value);

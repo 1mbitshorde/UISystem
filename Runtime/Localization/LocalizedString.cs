@@ -37,8 +37,18 @@ namespace OneM.UISystem
             this.fallback = fallback;
         }
 
-        public async readonly Awaitable<bool> HasLocalization()
+        /// <summary>
+        /// Creates a LocalizedString with only a fallback text, leaving the Table Id and Entry Id empty.
+        /// </summary>
+        /// <param name="fallback">The fallback text to be used when an available localization is not found.</param>
+        public LocalizedString(string fallback) : this(string.Empty, string.Empty, fallback)
+        { }
+
+        public async readonly Awaitable<bool> HasLocalizationAsync()
         {
+            var hasInvalidTableOrEntry = string.IsNullOrEmpty(tableId) || string.IsNullOrEmpty(entryId);
+            if (hasInvalidTableOrEntry) return false;
+
             var database = LocalizationSettings.StringDatabase;
             var table = await database.GetTableEntryAsync(tableId, entryId).Task;
             return table.Entry != null && !string.IsNullOrEmpty(table.Entry.GetLocalizedString());
@@ -50,7 +60,7 @@ namespace OneM.UISystem
         /// <param name="label">The Label component.</param>
         public async readonly void UpdateLocalization(Label label)
         {
-            var hasLocalization = await HasLocalization();
+            var hasLocalization = await HasLocalizationAsync();
             if (hasLocalization) label.UpdateLocalization(tableId, entryId);
             else label.Text = fallback;
         }
