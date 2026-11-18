@@ -18,10 +18,17 @@ namespace OneM.UISystem
         [SerializeField] private ActionButton confirmButton;
         [SerializeField] private ActionButton cancelButton;
 
+        [Space]
+        [SerializeField] private bool showCancelButton = true;
+
         private event Action OnCanceled;
         private event Action OnConfirmed;
 
-        private void Awake() => SetupButtonNavigations();
+        private void Awake()
+        {
+            SetupButtonNavigations();
+            SetCancelButtonVisibility(showCancelButton);
+        }
 
         public void Show(
             LocalizedString message,
