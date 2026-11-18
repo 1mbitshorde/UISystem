@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.8.8] - 2026-11-18
+### Added
+- Make dialogue cancel button configurable
 
 ## [0.8.7] - 2026-10-13
 ### Fixed
@@ -125,7 +128,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - gitignore
 - Initial commit
 
-[Unreleased]: https://github.com/1mbitshorde/UISystem/compare/0.8.7...main
+[Unreleased]: https://github.com/1mbitshorde/UISystem/compare/0.8.8...main
+[0.8.8]: https://github.com/1mbitshorde/UISystem/tree/0.8.8/
 [0.8.7]: https://github.com/1mbitshorde/UISystem/tree/0.8.7/
 [0.8.6]: https://github.com/1mbitshorde/UISystem/tree/0.8.6/
 [0.8.5]: https://github.com/1mbitshorde/UISystem/tree/0.8.5/
